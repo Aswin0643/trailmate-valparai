@@ -1,37 +1,17 @@
-# TrailMate – GitHub Pages update
+# TrailMate — GitHub Pages
 
-## Publish this update
+## Deploy
 1. Extract this ZIP.
-2. Open the repository `Aswin0643/trailmate-valparai`.
-3. Upload the contents of this folder directly to the repository root (not inside a new folder).
-4. Replace the existing `index.html`, `app.js`, `styles.css`, `service-worker.js`, and other matching files.
-5. Commit the changes. GitHub Pages will redeploy automatically.
-
-## Included changes
-- One-photo-at-a-time auto-advancing destination gallery (no horizontal image strip).
-- One complete round-trip route, from Pollachi through all listed stops and back via Chalakudy, Thrissur and Palakkad.
-- Single interactive map with numbered pins and an OSRM road-route request.
-- Vehicle registration field with explicit save and persistent browser storage.
-- Passenger Edit and Remove actions; Remove always asks for confirmation.
-- Visit progress, vehicle and passenger data saved locally in the browser.
-
-## Important
-- The map and online photographs require an internet connection. The site shell and local checklist are cached by the service worker.
-- Map pins are approximate location markers; the road line is requested from the public OSRM routing service and may be unavailable or differ from current road restrictions. Always confirm forest/checkpoint access for motorcycles before riding.
-- Google Maps route URL includes all itinerary waypoints, but Google may limit waypoint handling on some mobile devices. The interactive map displays the full ordered stop list.
-- Vehicle/passenger details are stored only in the current browser on this device, not in a shared database.
-- Destination photos are linked from Wikimedia Commons. See each image's Commons file page for creator and license details.
-
-\n## Visit duration schedule update\nEach destination now shows an estimated arrival time, recommended time to spend there, and an estimated departure time. These are planning estimates, not guaranteed travel times. Delays, road conditions, entry permissions, queues and weather may require changing the schedule.\n
-
-## Latest update
-- Removed the passenger-details section entirely.
-- Kept the vehicle registration field only.
-- Moved the Valparai e-pass information below the complete round-trip map.
-
-- Removed the entire vehicle and passenger/group-details section. The e-pass card remains immediately below the complete round-trip map.
+2. Upload all seven files directly into the repository root (not into a subfolder).
+3. Replace the existing files when GitHub asks.
+4. Commit the changes and wait for GitHub Pages to finish deploying.
+5. Open the site and hard-refresh with Ctrl+Shift+R.
 
 ## Current version
-- No fixed arrival/departure timetable.
-- No separate return-journey timetable card.
-- The complete round-trip map and route remain.
+- The entire separate “Return journey · after Athirappilly” timetable/card has been removed.
+- No return timetable, departure times, stop times, or late-night riding notice card is present.
+- The single complete round-trip map and route remain, including the return road through Chalakudy, Thrissur and Palakkad.
+- The Valparai e-pass card remains directly below the map.
+- Destination visit-duration suggestions and the preparation checklist remain.
+
+The service-worker cache version has been updated to force browsers to fetch the current files.
