@@ -31,12 +31,7 @@
 
 - Removed the entire vehicle and passenger/group-details section. The e-pass card remains immediately below the complete round-trip map.
 
-\n## Detailed timing plan update\n- Pollachi departure target: 4:00 AM.\n- Each attraction now displays a complete visit time window and suggested stay duration.\n- Athirappilly arrival target: 4:00–4:30 PM.\n- Added estimated return journey windows via Chalakudy, Thrissur and Palakkad back to Pollachi.\n- Timings are planning estimates only; forest access, checkpoints, weather and fatigue may require changes.\n
-
-## Schedule display update
-Removed all clock-time schedules and arrival/departure times. Destination cards show only suggested visit durations, with flexible planning and no fixed timetable.
-
-
-## Return section update
-- Removed the separate return-journey timetable card after Athirappilly.
-- The complete round-trip route and map remain unchanged.
+## Current version
+- No fixed arrival/departure timetable.
+- No separate return-journey timetable card.
+- The complete round-trip map and route remain.
