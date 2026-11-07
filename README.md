@@ -1,21 +1,23 @@
-# TrailMate – Valparai Round Trip
+# TrailMate – GitHub Pages update
 
-GitHub Pages-ready PWA files. Upload the contents of this folder directly to the repository root (not inside a subfolder).
+## Publish this update
+1. Extract this ZIP.
+2. Open the repository `Aswin0643/trailmate-valparai`.
+3. Upload the contents of this folder directly to the repository root (not inside a new folder).
+4. Replace the existing `index.html`, `app.js`, `styles.css`, `service-worker.js`, and other matching files.
+5. Commit the changes. GitHub Pages will redeploy automatically.
 
-## Features
-- Auto-scrolling destination photo gallery and scenic hero background
-- Indicative arrival times beside the eight itinerary stops
-- Link to the official Tamil Nadu e-Pass portal
-- Vehicle registration and passenger details saved in browser localStorage
-- Visited-stop checklist saved in browser localStorage
-- Separate outward and return Google Maps route links
-- Service worker caches the app shell; external photo gallery and map still need internet
+## Included changes
+- One-photo-at-a-time auto-advancing destination gallery (no horizontal image strip).
+- One complete round-trip route, from Pollachi through all listed stops and back via Chalakudy, Thrissur and Palakkad.
+- Single interactive map with numbered pins and an OSRM road-route request.
+- Vehicle registration field with explicit save and persistent browser storage.
+- Passenger Edit and Remove actions; Remove always asks for confirmation.
+- Visit progress, vehicle and passenger data saved locally in the browser.
 
-## Publish
-GitHub repository → Settings → Pages → Deploy from a branch → `main` → `/(root)`.
-
-## Important notes
-- Itinerary times are planning estimates, not guaranteed arrival times.
-- Confirm the current Valparai e-pass requirements and Malakkappara–Vazhachal forest-road access/timings for two-wheelers before departure. A route link does not confirm permission.
-- Passenger and vehicle details are stored only in the current browser on the current device. They are not synced to a server and may be lost if browser storage is cleared.
-- Photos load from their original external websites and therefore require internet. Replace with photos you own or have permission to reuse before public redistribution.
+## Important
+- The map and online photographs require an internet connection. The site shell and local checklist are cached by the service worker.
+- Map pins are approximate location markers; the road line is requested from the public OSRM routing service and may be unavailable or differ from current road restrictions. Always confirm forest/checkpoint access for motorcycles before riding.
+- Google Maps route URL includes all itinerary waypoints, but Google may limit waypoint handling on some mobile devices. The interactive map displays the full ordered stop list.
+- Vehicle/passenger details are stored only in the current browser on this device, not in a shared database.
+- Destination photos are linked from Wikimedia Commons. See each image's Commons file page for creator and license details.
