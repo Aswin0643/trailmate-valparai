@@ -35,3 +35,8 @@
 
 ## Schedule display update
 Removed all clock-time schedules and arrival/departure times. Destination cards show only suggested visit durations, with flexible planning and no fixed timetable.
+
+
+## Return section update
+- Removed the separate return-journey timetable card after Athirappilly.
+- The complete round-trip route and map remain unchanged.
