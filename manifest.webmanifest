@@ -1,18 +1,1 @@
-{
-  "name": "TrailMate – Valparai Trip",
-  "short_name": "TrailMate",
-  "description": "Offline-ready Valparai and Athirappilly trip checklist",
-  "start_url": "./",
-  "scope": "./",
-  "display": "standalone",
-  "background_color": "#f3f5f0",
-  "theme_color": "#173b30",
-  "icons": [
-    {
-      "src": "./icon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
-    }
-  ]
-}
+{"name":"TrailMate – Valparai Round Trip","short_name":"TrailMate","description":"Pollachi, Valparai and Athirappilly road-trip companion","start_url":"./","scope":"./","display":"standalone","background_color":"#f3f5f0","theme_color":"#173b30","icons":[{"src":"./icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]}
