@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#102b25"><meta name="description" content="Offline-ready Valparai and Athirappilly road trip companion">
+<link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./icon.svg">
+<link rel="stylesheet" href="./styles.css">
+<title>TrailMate · Valparai Trip</title>
+</head>
+<body>
+<header class="top"><div class="brand"><span class="brandicon">⌁</span><div><b>TRAILMATE</b><small>WESTERN GHATS ROAD COMPANION</small></div></div><span id="network" class="status">Checking connection…</span></header>
+<main>
+<section class="hero"><div class="eyebrow">🏍 BIKE TRIP · POLLACHI, TAMIL NADU</div><h1>Chase the<br><em>Western Ghats.</em></h1><p>Valparai · Sholayar · Athirappilly</p><div class="herofoot"><span>08 NOV 2026</span><span>ONE-DAY ITINERARY</span></div></section>
+<section class="stats"><article><small>VISITED</small><b id="visited">0 / 8</b></article><article><small>PROGRESS</small><b id="percent">0%</b></article><article><small>TRIP MODE</small><b>🏍 Bike</b></article></section>
+<section class="card"><div class="sectionhead"><div><span class="eyebrow dark">YOUR JOURNEY</span><h2>Places to explore</h2></div><button id="reset" class="quiet">Reset</button></div><div class="bar"><div id="barfill"></div></div><div id="stops" class="stops"></div><button id="export" class="outline full">Download trip checklist (.json)</button></section>
+<section class="card"><span class="eyebrow dark">NAVIGATION</span><h2>Your route</h2><p class="muted">Pollachi → Valparai viewpoints → Koozhangal River → Sholayar → Malakkappara → Vazhachal → Athirappilly.</p><div class="mapbox"><div class="maptitle">Route map · online tiles</div><iframe title="OpenStreetMap route overview" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=76.75%2C10.15%2C76.95%2C10.55&layer=mapnik"></iframe><small>Map tiles require internet. This preview is not an offline navigation map.</small></div><a class="button full" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&origin=Pollachi%2C+Tamil+Nadu&destination=Athirappilly+Waterfalls%2C+Kerala&waypoints=Attakatti%2C+Valparai%7CKavarkal%2C+Valparai%7CThalanar%2C+Valparai%7CKoozhangal+River%2C+Valparai%7CSholayar+Dam%7CMalakkappara%7CVazhachal+Waterfalls&travelmode=driving">Open route in Google Maps ↗</a><a class="outline full linkbutton" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&origin=Athirappilly+Waterfalls&destination=Pollachi%2C+Tamil+Nadu&travelmode=driving">Return route to Pollachi ↗</a></section>
+<section class="card"><span class="eyebrow dark">READY BEFORE YOU RIDE</span><h2>Offline preparation</h2><ol class="instructions"><li>Open Google Maps while online.</li><li>Tap your profile picture → <b>Offline maps</b>.</li><li>Choose <b>Select your own map</b> and cover the travel region as far as the download area permits.</li><li>Download it over Wi-Fi and verify it before leaving.</li></ol><a class="outline full linkbutton" href="https://support.google.com/maps/answer/6291838" target="_blank" rel="noopener">Google Maps offline map instructions ↗</a><p class="notice">This PWA caches its own pages and checklist. It does not download Google Maps tiles. Offline map data must be provided separately through a licensed tile package/provider; forest permissions and checkpoint hours must be checked independently.</p></section>
+<section class="card"><span class="eyebrow dark">BIKE CHECK</span><h2>Before departure</h2><div class="essentials"><label><input type="checkbox"> Helmet & documents</label><label><input type="checkbox"> Fuel & tyre pressure</label><label><input type="checkbox"> Raincoat</label><label><input type="checkbox"> Water & snacks</label><label><input type="checkbox"> Power bank</label><label><input type="checkbox"> First-aid & puncture kit</label><label><input type="checkbox"> Offline maps downloaded</label><label><input type="checkbox"> Confirm forest-road bike access</label></div></section>
+</main><footer>RIDE SAFE · RESPECT THE FOREST · LEAVE NO TRACE</footer>
+<script src="./app.js"></script>
+</body></html>
