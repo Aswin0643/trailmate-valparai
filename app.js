@@ -1,12 +1,12 @@
 const stops=[
-["Hornbill Viewpoint","Attakatti · Valparai forest scenery","06:30 AM","20 min","06:50 AM","🌄"],
-["Kavarkal Mist Point","Misty mountain scenery","07:15 AM","20 min","07:35 AM","☁️"],
-["Thalanar Viewpoint","Tea estates and valley views","07:45 AM","25 min","08:10 AM","🏞️"],
-["Koozhangal River / Vellamalai","River-side stop · verify safe access","08:30 AM","30 min","09:00 AM","💧"],
-["Sholayar Dam","Reservoir and mountain scenery","09:30 AM","20 min","09:50 AM","🌊"],
-["Malakkappara","Forest checkpoint · bike entry must be confirmed","10:15 AM","15 min","10:30 AM","🌳"],
-["Vazhachal Waterfalls","Short stop if time and access permit","12:30 PM","30 min","01:00 PM","💦"],
-["Athirappilly Waterfalls","Main destination · Kerala","01:30 PM","75 min","02:45 PM","🏔️"]
+["Hornbill Viewpoint","Attakatti · first scenic stop","Spend around 30–40 minutes","🌄"],
+["Kavarkal Mist Point","Misty mountain viewpoint","Spend around 20–30 minutes","☁️"],
+["Thalanar Viewpoint","Tea estates and valley views","Spend around 20–30 minutes","🏞️"],
+["Koozhangal River / Vellamalai","River-side stop · verify safe access","Spend around 30 minutes","💧"],
+["Sholayar Dam","Reservoir and mountain scenery","Spend around 20–30 minutes","🌊"],
+["Malakkappara","Forest checkpoint · bike entry must be confirmed","Short checkpoint / photo stop","🌳"],
+["Vazhachal Waterfalls","Short stop if time and access permit","Spend around 20–30 minutes","💦"],
+["Athirappilly Waterfalls","Main destination · Kerala","Spend around 60–75 minutes","🏔️"]
 ];
 const photos=[
 {title:"Thalanar Viewpoint",desc:"Tea estates and Western Ghats scenery",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Morning%20view%20Thalanar%20Road%2C%20Valparai%20-%20panoramio.jpg?width=1400"},
@@ -42,7 +42,7 @@ const KEY="trailmate-valparai-v3";
 let saved={};try{saved=JSON.parse(localStorage.getItem(KEY)||"{}")||{}}catch{}
 let state=saved.visits||{};
 const host=document.querySelector("#stops");
-stops.forEach((s,i)=>{const row=document.createElement("div");row.className="stop";row.dataset.i=i;row.innerHTML=`<button class="tick" aria-label="Mark ${s[0]} visited" aria-pressed="false">✓</button><div class="stopcopy"><div class="name"></div><div class="detail"></div><div class="stay-time"></div></div><div class="time-stack"><div class="stop-time"></div><div class="depart-time"></div></div><span class="number">${String(i+1).padStart(2,"0")}</span><span>${s[5]}</span>`;row.querySelector(".name").textContent=s[0];row.querySelector(".detail").textContent=s[1];row.querySelector(".stop-time").textContent=`Arrive ${s[2]}`;row.querySelector(".stay-time").textContent=`Spend ${s[3]} here · enjoy the place`;row.querySelector(".depart-time").textContent=`Leave around ${s[4]}`;row.querySelector("button").addEventListener("click",()=>{state[i]=!state[i];persist();render()});host.append(row)});
+stops.forEach((s,i)=>{const row=document.createElement("div");row.className="stop";row.dataset.i=i;row.innerHTML=`<button class="tick" aria-label="Mark ${s[0]} visited" aria-pressed="false">✓</button><div class="stopcopy"><div class="name"></div><div class="detail"></div><div class="stay-time"></div></div><span class="number">${String(i+1).padStart(2,"0")}</span><span>${s[3]}</span>`;row.querySelector(".name").textContent=s[0];row.querySelector(".detail").textContent=s[1];row.querySelector(".stay-time").textContent=s[2];row.querySelector("button").addEventListener("click",()=>{state[i]=!state[i];persist();render()});host.append(row)});
 function persist(){try{localStorage.setItem(KEY,JSON.stringify({visits:state}))}catch{alert("Browser storage is unavailable. Your latest changes may not be saved.")}}
 function render(){let n=0;document.querySelectorAll(".stop").forEach(r=>{const done=!!state[r.dataset.i];if(done)n++;r.classList.toggle("done",done);r.querySelector("button").setAttribute("aria-pressed",String(done))});let p=Math.round(n/stops.length*100);document.querySelector("#visited").textContent=`${n} / ${stops.length}`;document.querySelector("#percent").textContent=p+"%";document.querySelector("#barfill").style.width=p+"%"}
 document.querySelector("#reset").addEventListener("click",()=>{if(confirm("Warning: reset all visited-place ticks?")){state={};persist();render()}});

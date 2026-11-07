@@ -30,3 +30,8 @@
 - Moved the Valparai e-pass information below the complete round-trip map.
 
 - Removed the entire vehicle and passenger/group-details section. The e-pass card remains immediately below the complete round-trip map.
+
+\n## Detailed timing plan update\n- Pollachi departure target: 4:00 AM.\n- Each attraction now displays a complete visit time window and suggested stay duration.\n- Athirappilly arrival target: 4:00–4:30 PM.\n- Added estimated return journey windows via Chalakudy, Thrissur and Palakkad back to Pollachi.\n- Timings are planning estimates only; forest access, checkpoints, weather and fatigue may require changes.\n
+
+## Schedule display update
+Removed all clock-time schedules and arrival/departure times. Destination cards show only suggested visit durations, with flexible planning and no fixed timetable.
