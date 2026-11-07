@@ -21,3 +21,12 @@
 - Google Maps route URL includes all itinerary waypoints, but Google may limit waypoint handling on some mobile devices. The interactive map displays the full ordered stop list.
 - Vehicle/passenger details are stored only in the current browser on this device, not in a shared database.
 - Destination photos are linked from Wikimedia Commons. See each image's Commons file page for creator and license details.
+
+\n## Visit duration schedule update\nEach destination now shows an estimated arrival time, recommended time to spend there, and an estimated departure time. These are planning estimates, not guaranteed travel times. Delays, road conditions, entry permissions, queues and weather may require changing the schedule.\n
+
+## Latest update
+- Removed the passenger-details section entirely.
+- Kept the vehicle registration field only.
+- Moved the Valparai e-pass information below the complete round-trip map.
+
+- Removed the entire vehicle and passenger/group-details section. The e-pass card remains immediately below the complete round-trip map.

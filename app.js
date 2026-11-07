@@ -1,12 +1,12 @@
 const stops=[
-["Hornbill Viewpoint","Attakatti · Valparai forest scenery","06:30 AM","🌄"],
-["Kavarkal Mist Point","Misty mountain scenery","07:15 AM","☁️"],
-["Thalanar Viewpoint","Tea estates and valley views","07:45 AM","🏞️"],
-["Koozhangal River / Vellamalai","River-side stop · verify safe access","08:30 AM","💧"],
-["Sholayar Dam","Reservoir and mountain scenery","09:30 AM","🌊"],
-["Malakkappara","Forest checkpoint · bike entry must be confirmed","10:15 AM","🌳"],
-["Vazhachal Waterfalls","Short stop if time and access permit","12:30 PM","💦"],
-["Athirappilly Waterfalls","Main destination · Kerala","01:30 PM","🏔️"]
+["Hornbill Viewpoint","Attakatti · Valparai forest scenery","06:30 AM","20 min","06:50 AM","🌄"],
+["Kavarkal Mist Point","Misty mountain scenery","07:15 AM","20 min","07:35 AM","☁️"],
+["Thalanar Viewpoint","Tea estates and valley views","07:45 AM","25 min","08:10 AM","🏞️"],
+["Koozhangal River / Vellamalai","River-side stop · verify safe access","08:30 AM","30 min","09:00 AM","💧"],
+["Sholayar Dam","Reservoir and mountain scenery","09:30 AM","20 min","09:50 AM","🌊"],
+["Malakkappara","Forest checkpoint · bike entry must be confirmed","10:15 AM","15 min","10:30 AM","🌳"],
+["Vazhachal Waterfalls","Short stop if time and access permit","12:30 PM","30 min","01:00 PM","💦"],
+["Athirappilly Waterfalls","Main destination · Kerala","01:30 PM","75 min","02:45 PM","🏔️"]
 ];
 const photos=[
 {title:"Thalanar Viewpoint",desc:"Tea estates and Western Ghats scenery",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Morning%20view%20Thalanar%20Road%2C%20Valparai%20-%20panoramio.jpg?width=1400"},
@@ -40,34 +40,13 @@ document.querySelector("#slideNext").addEventListener("click",()=>{showSlide(sli
 showSlide(0);restartSlides();
 const KEY="trailmate-valparai-v3";
 let saved={};try{saved=JSON.parse(localStorage.getItem(KEY)||"{}")||{}}catch{}
-let state=saved.visits||{},group=saved.group||{vehicle:"",passengers:[]};
+let state=saved.visits||{};
 const host=document.querySelector("#stops");
-stops.forEach((s,i)=>{const row=document.createElement("div");row.className="stop";row.dataset.i=i;row.innerHTML=`<button class="tick" aria-label="Mark ${s[0]} visited" aria-pressed="false">✓</button><div class="stopcopy"><div class="name"></div><div class="detail"></div></div><div class="stop-time"></div><span class="number">${String(i+1).padStart(2,"0")}</span><span>${s[3]}</span>`;row.querySelector(".name").textContent=s[0];row.querySelector(".detail").textContent=s[1];row.querySelector(".stop-time").textContent=s[2];row.querySelector("button").addEventListener("click",()=>{state[i]=!state[i];persist();render()});host.append(row)});
-function persist(){try{localStorage.setItem(KEY,JSON.stringify({visits:state,group}))}catch{alert("Browser storage is unavailable. Your latest changes may not be saved.")}}
+stops.forEach((s,i)=>{const row=document.createElement("div");row.className="stop";row.dataset.i=i;row.innerHTML=`<button class="tick" aria-label="Mark ${s[0]} visited" aria-pressed="false">✓</button><div class="stopcopy"><div class="name"></div><div class="detail"></div><div class="stay-time"></div></div><div class="time-stack"><div class="stop-time"></div><div class="depart-time"></div></div><span class="number">${String(i+1).padStart(2,"0")}</span><span>${s[5]}</span>`;row.querySelector(".name").textContent=s[0];row.querySelector(".detail").textContent=s[1];row.querySelector(".stop-time").textContent=`Arrive ${s[2]}`;row.querySelector(".stay-time").textContent=`Spend ${s[3]} here · enjoy the place`;row.querySelector(".depart-time").textContent=`Leave around ${s[4]}`;row.querySelector("button").addEventListener("click",()=>{state[i]=!state[i];persist();render()});host.append(row)});
+function persist(){try{localStorage.setItem(KEY,JSON.stringify({visits:state}))}catch{alert("Browser storage is unavailable. Your latest changes may not be saved.")}}
 function render(){let n=0;document.querySelectorAll(".stop").forEach(r=>{const done=!!state[r.dataset.i];if(done)n++;r.classList.toggle("done",done);r.querySelector("button").setAttribute("aria-pressed",String(done))});let p=Math.round(n/stops.length*100);document.querySelector("#visited").textContent=`${n} / ${stops.length}`;document.querySelector("#percent").textContent=p+"%";document.querySelector("#barfill").style.width=p+"%"}
-document.querySelector("#reset").addEventListener("click",()=>{if(confirm("Warning: reset all visited-place ticks? Vehicle and passenger details will be kept.")){state={};persist();render()}});
-const vehicle=document.querySelector("#vehicle");
-vehicle.value=group.vehicle||"";
-function showVehicle(){document.querySelector("#vehicleSaved").textContent=group.vehicle?`Saved vehicle number: ${group.vehicle}`:"No vehicle number saved yet."}
-document.querySelector("#saveVehicle").addEventListener("click",()=>{const v=vehicle.value.trim().toUpperCase();if(!v){alert("Please enter the vehicle registration number.");vehicle.focus();return}if(group.vehicle&&group.vehicle!==v&&!confirm(`Update vehicle number from ${group.vehicle} to ${v}?`))return;group.vehicle=v;vehicle.value=v;persist();showVehicle();alert("Vehicle number saved on this device.")});
-showVehicle();
-const nameInput=document.querySelector("#passengerName"),ageInput=document.querySelector("#passengerAge");
-function renderPassengers(){
- const list=document.querySelector("#passengerList");list.replaceChildren();document.querySelector("#passengerCount").textContent=`${group.passengers.length} added`;
- if(!group.passengers.length){const p=document.createElement("p");p.className="empty";p.textContent="No passengers added yet.";list.append(p);return}
- group.passengers.forEach((person,i)=>{
-  const row=document.createElement("div");row.className="passenger-row";
-  const info=document.createElement("span");info.textContent=`${i+1}. ${person.name} · ${person.age} years`;
-  const actions=document.createElement("div");actions.className="passenger-actions";
-  const edit=document.createElement("button");edit.className="edit-person";edit.type="button";edit.textContent="Edit";
-  edit.addEventListener("click",()=>{const newName=prompt("Edit passenger name:",person.name);if(newName===null)return;const clean=newName.trim();if(!clean){alert("Passenger name cannot be empty.");return}const ageText=prompt("Edit passenger age:",String(person.age));if(ageText===null)return;const age=Number(ageText);if(!Number.isInteger(age)||age<1||age>110){alert("Enter a valid age between 1 and 110.");return}if(!confirm(`Save changes for ${person.name}?`))return;group.passengers[i]={name:clean,age};persist();renderPassengers()});
-  const remove=document.createElement("button");remove.className="remove-person";remove.type="button";remove.textContent="Remove";
-  remove.addEventListener("click",()=>{if(!confirm(`WARNING: Remove ${person.name} from the passenger list? This cannot be undone.`))return;group.passengers.splice(i,1);persist();renderPassengers()});
-  actions.append(edit,remove);row.append(info,actions);list.append(row)
- })
-}
-document.querySelector("#addPassenger").addEventListener("click",()=>{const name=nameInput.value.trim(),age=Number(ageInput.value);if(!name){alert("Enter the passenger name.");nameInput.focus();return}if(!Number.isInteger(age)||age<1||age>110){alert("Enter a valid passenger age.");ageInput.focus();return}group.passengers.push({name,age});persist();nameInput.value="";ageInput.value="";renderPassengers()});
-function net(){const el=document.querySelector("#network");el.textContent=navigator.onLine?"● Online":"● Offline mode";el.style.color=navigator.onLine?"#28765a":"#a66a20"}addEventListener("online",net);addEventListener("offline",net);net();render();renderPassengers();
+document.querySelector("#reset").addEventListener("click",()=>{if(confirm("Warning: reset all visited-place ticks?")){state={};persist();render()}});
+function net(){const el=document.querySelector("#network");el.textContent=navigator.onLine?"● Online":"● Offline mode";el.style.color=navigator.onLine?"#28765a":"#a66a20"}addEventListener("online",net);addEventListener("offline",net);net();render();
 /* Full continuous round-trip map. Route is requested from OSRM in one sequence. */
 const routePoints=[
  {name:"Pollachi · Start",lat:10.6583,lon:77.0080},
